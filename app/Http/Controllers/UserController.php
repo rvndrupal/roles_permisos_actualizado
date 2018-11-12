@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         $users=User::paginate();
 
-        return view('users.index', compact('users'));
+        return view('admin.users.index', compact('users'));
     }   
    
 
@@ -32,7 +32,7 @@ class UserController extends Controller
     {
         //dd($User->id);
 
-        return view('users.show', compact('user'));
+        return view('admin.users.show', compact('user'));
     }
 
     /**
@@ -45,7 +45,7 @@ class UserController extends Controller
     {
         $roles = Role::get();  //se descargan todos los roles
 
-        return view('users.edit', compact('user', 'roles'));
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -64,7 +64,7 @@ class UserController extends Controller
         $user->roles()->sync($request->get('roles'));
 
 
-        return redirect()->route('users.edit', $user->id)
+        return redirect()->route('users.index')
         ->with('info','Usuario actualizado con exito');
 
     }
