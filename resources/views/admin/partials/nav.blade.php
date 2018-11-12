@@ -13,7 +13,9 @@
           @can('users.index')
           <li><a href="{{ route('users.index') }}"><i class="fa fa-eye"></i>Usuarios</a></li>
           @endcan
-          <li><a href="#"><i class="fa fa-eye"></i>Roles</a></li>
+          @can('roless.index')
+          <li><a href="{{ route('roles.index') }}"><i class="fa fa-eye"></i>Roles</a></li>
+          @endcan
         </ul>
     </li>
 

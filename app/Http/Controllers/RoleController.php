@@ -19,7 +19,7 @@ class RoleController extends Controller
     {
         $roles=Role::paginate();
 
-        return view('roles.index', compact('roles'));
+        return view('admin.roles.index', compact('roles'));
     }   
 
     /**
@@ -30,7 +30,7 @@ class RoleController extends Controller
     public function create()
     {
         $permissions = Permission::get();  //se descargan todos los permisos
-        return view('roles.create', compact('permissions'));
+        return view('admin.roles.create', compact('permissions'));
     }
 
     /**
@@ -46,7 +46,7 @@ class RoleController extends Controller
         //actualizamos los permisos
         $role->permissions()->sync($request->get('permissions'));
         
-        return redirect()->route('roles.edit', $role->id)
+        return redirect()->route('roles.index')
         ->with('info','Role guardado con exito');
     }
    
@@ -61,7 +61,7 @@ class RoleController extends Controller
     {
         //dd($role->id);
 
-        return view('roles.show', compact('role'));
+        return view('admin.roles.show', compact('role'));
     }
 
     /**
@@ -74,7 +74,7 @@ class RoleController extends Controller
     {
         $permissions = Permission::get();  //se descargan todos los permisos
 
-        return view('roles.edit', compact('role', 'permissions'));
+        return view('admin.roles.edit', compact('role', 'permissions'));
     }
 
     /**
