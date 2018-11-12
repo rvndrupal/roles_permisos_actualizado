@@ -91,6 +91,12 @@ Route::middleware(['auth'])->group(function(){
 
 
     //rutas usuarios    
+    Route::get('users/create' , 'UserController@create')->name('users.create')
+    ->middleware('permission:users.create');
+
+    Route::post('users/store', 'UserController@store')->name('users.store')
+    ->middleware('permission:users.create');
+
 
     Route::get('users', 'UserController@index')->name('users.index')
     ->middleware('permission:users.index');   

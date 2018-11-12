@@ -35,6 +35,29 @@ class UserController extends Controller
         return view('admin.users.show', compact('user'));
     }
 
+    public function create()
+    {
+        $roles = Role::get(); 
+        return view('admin.users.create',compact('roles'));
+    }
+
+    public function store(Request $request)
+    {
+        // $user=User::create($request->all());
+        // $user=bcrypt($request['password']);
+       $user=User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
+        ]);
+
+         //actualizamos los roles
+         $user->roles()->sync($request->get('roles'));
+        
+        return redirect()->route('users.index')
+        ->with('info','Usuario guardado con exito');
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

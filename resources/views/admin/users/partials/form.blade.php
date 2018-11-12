@@ -4,6 +4,21 @@
     {!! Form::text('name', null, ['class' => 'form-control']) !!}   
     
 </div>
+
+<div class="from-group">    
+        {!! Form::label('email','Correo') !!}
+        
+        {!! Form::text('email', null, ['class' => 'form-control']) !!}   
+        
+    </div>
+<hr>
+
+<div class="from-group">    
+        {!! Form::label('password','Password') !!}
+        
+        {!! Form::password('password', ['class' => 'form-control']) !!}   
+        
+    </div>
 <hr>
 
 <h3>Lista de roles</h3>

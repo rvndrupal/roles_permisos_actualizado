@@ -16,7 +16,10 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Usuarios
+                        Usuario
+                        @can('users.create')
+                        <a href="{{ route('users.create') }}" class="btn btn-sm btn-primary pull-right">Nuevo</a>
+                        @endcan
                    
                 </div>
 
